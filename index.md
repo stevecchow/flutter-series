@@ -138,3 +138,33 @@
 | alignment    | Alignment    | 控制未定位子组件的对齐方式（默认左上） |
 | fit          | StackFit     | 决定非 Positioned 子组件如何适应 Stack |
 | clipBehavior | Clip         | 控制是否裁剪超出 Stack 区域的内容      |
+
+##### 7 Expanded
+
+Expanded 会让子组件在 Row / Column / Flex 中**自动占据尽可能多的剩余空间**，并将其扩展。
+
+
+
+##### 8 ListTile
+
+ListTile 是一个封装好的 Widget，提供**标题、副标题、图标、尾部控件、点击事件等统一布局**的列表项。
+
+
+
+##### 9 Scaffold
+
+Scaffold 是 Flutter 提供的页面结构容器，封装了 AppBar、Drawer、FAB、BottomNavigationBar 等常见布局区域。
+
+| **属性名**                   | **类型**                     | **作用**                                  |
+| ---------------------------- | ---------------------------- | ----------------------------------------- |
+| appBar                       | PreferredSizeWidget          | 顶部导航栏（如 AppBar）                   |
+| body                         | Widget                       | 页面主要内容区域                          |
+| floatingActionButton         | Widget                       | 浮动按钮（右下角）                        |
+| bottomNavigationBar          | Widget                       | 底部导航栏（通常用于多 Tab）              |
+| drawer                       | Widget                       | 左侧抽屉菜单                              |
+| endDrawer                    | Widget                       | 右侧抽屉菜单                              |
+| backgroundColor              | Color                        | Scaffold 背景色                           |
+| floatingActionButtonLocation | FloatingActionButtonLocation | FAB 位置                                  |
+| extendBodyBehindAppBar       | bool                         | 是否让 body 延伸到 appBar 后面            |
+| resizeToAvoidBottomInset     | bool                         | 是否在键盘弹出时调整布局高度（默认 true） |
+

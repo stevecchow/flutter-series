@@ -1,5 +1,6 @@
 import 'package:dribbledemo_1/components/emotion_face.dart';
 import 'package:flutter/material.dart';
+import 'package:dribbledemo_1/components/list_Item.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,7 +28,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: SafeArea(
-        child: Column(
+        child: Stack(
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -71,7 +72,6 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-
                   // search bar
                   Container(
                     margin: const EdgeInsets.symmetric(vertical: 20.0),
@@ -95,7 +95,6 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
-
                   // How do you feel?
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -111,7 +110,6 @@ class _HomePageState extends State<HomePage> {
                       Icon(Icons.more_horiz, color: Colors.white),
                     ],
                   ),
-
                   // Emotion Cards
                   SizedBox(height: 20),
                   Row(
@@ -131,133 +129,99 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             SizedBox(height: 20),
-            Expanded(
-              child: Container(
-                padding: const EdgeInsets.all(20.0),
-                color: Colors.white,
-                height: 500.0,
-                child: Center(
-                  child: Column(
+            DraggableScrollableSheet(
+              initialChildSize: 0.55, // 初始高度（百分比）
+              minChildSize: 0.55, // 最小高度
+              maxChildSize: 0.90, // 最大高度
+              builder: (context, scrollController) {
+                return Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(24),
+                    ),
+                    boxShadow: [
+                      BoxShadow(color: Colors.black12, blurRadius: 10),
+                    ],
+                  ),
+                  child: ListView(
+                    controller: scrollController,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Exercise',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue[800],
-                            ),
+                      const SizedBox(height: 12),
+                      Center(
+                        child: Container(
+                          width: 40,
+                          height: 6,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.circular(12),
                           ),
-                          Icon(Icons.more_horiz, color: Colors.blue[600]),
-                        ],
+                        ),
                       ),
-                      SizedBox(height: 20),
                       Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(12),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(
-                                0,
-                                3,
-                              ), // changes position of shadow
+                        padding: const EdgeInsets.all(20.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Exercise',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blue[800],
+                              ),
                             ),
+                            Icon(Icons.more_horiz, color: Colors.blue[600]),
                           ],
                         ),
-                        child: Column(
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.all(10.0),
-                              decoration: BoxDecoration(
-                                color: Colors.blue[50],
-                                borderRadius: BorderRadius.circular(12),
+                      ),
+                      SizedBox(
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              ListItem(
+                                title: 'Running',
+                                subtitle: '30 minutes',
+                                icon: Icons.directions_run,
                               ),
-                              child: ListTile(
-                                leading: Icon(
-                                  Icons.favorite,
-                                  color: Colors.blue[600],
-                                ),
-                                title: Text(
-                                  'Morning Yoga',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                subtitle: Text(
-                                  '30 minutes',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                                trailing: Icon(
-                                  Icons.arrow_forward,
-                                  color: Colors.blue[600],
-                                ),
+                              ListItem(
+                                title: 'Cycling',
+                                subtitle: '45 minutes',
+                                icon: Icons.directions_bike,
                               ),
-                            ),
-                            ListTile(
-                              leading: Icon(
-                                Icons.favorite,
-                                color: Colors.blue[600],
+                              ListItem(
+                                title: 'Swimming',
+                                subtitle: '1 hour',
+                                icon: Icons.pool,
                               ),
-                              title: Text(
-                                'Morning Yoga',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                              ListItem(
+                                title: 'Yoga',
+                                subtitle: '30 minutes',
+                                icon: Icons.self_improvement,
                               ),
-                              subtitle: Text(
-                                '30 minutes',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.grey,
-                                ),
+                              ListItem(
+                                title: 'Weightlifting',
+                                subtitle: '1 hour',
+                                icon: Icons.fitness_center,
                               ),
-                              trailing: Icon(
-                                Icons.arrow_forward,
-                                color: Colors.blue[600],
+                              ListItem(
+                                title: 'Weightlifting',
+                                subtitle: '1 hour',
+                                icon: Icons.fitness_center,
                               ),
-                            ),
-                            ListTile(
-                              leading: Icon(
-                                Icons.favorite,
-                                color: Colors.blue[600],
+                              ListItem(
+                                title: 'Weightlifting',
+                                subtitle: '1 hour',
+                                icon: Icons.fitness_center,
                               ),
-                              title: Text(
-                                'Morning Yoga',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              subtitle: Text(
-                                '30 minutes',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                              trailing: Icon(
-                                Icons.arrow_forward,
-                                color: Colors.blue[600],
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ],
                   ),
-                ),
-              ),
+                );
+              },
             ),
           ],
         ),
